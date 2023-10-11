@@ -5,15 +5,12 @@
 # recognize the names of the functions (c.f. name mangling)
 
 
-all: mexp mexpso mexpsoc
+all: mylib.so mylib.soc
 
-mexp: mexp.cpp mexp.h
-	g++ -O -Wall -omexp mexp.cpp    # build executable
-mexpso: mexp.cpp mexp.h
-	g++ -O -Wall -fPIC -shared -omexp.so mexp.cpp # build shared library
-mexpsoc: mexp.cpp mexp.h  # build "so" w/ C style linkage
-	g++ -O -Wall -fPIC -DEXTERNC -shared -omexp.soc mexp.cpp
-
+mylib.so: mylib.cpp mylib.h # build shared library
+	g++ -O -Wall -fPIC -shared -omylib.so mylib.cpp 
+mylib.soc: mylib.cpp mylib.h  # build "so" w/ C style linkage
+	g++ -O -Wall -fPIC -DEXTERNC -shared -omylib.soc mylib.cpp 
 
 clean:
-	rm -f mexp mexp.so mexp.soc *~
+	rm -f mylib.so mylib.soc *~
