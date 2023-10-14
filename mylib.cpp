@@ -11,23 +11,7 @@
 extern "C" {
 #endif
 
-void mandel(double *img, double re1, double re2, double im1, double im2,
-	    int nr, int ni){
-  const int NTRIALS=255;
-  double dx=(re2-re1)/nr;
-  double dy=(im2-im1)/ni;
-  // loop over grid starting in lower left corner
-  for (int j=0; j<ni; ++j){
-    double im=im1+j*dy;
-    for (int i=0; i<nr; ++i){
-      double re=re1+i*dx;
-      img[j*ni+i]=mandel_test(re,im,NTRIALS);
-    }
-  }
-}
-
-
-
+// estimate pi from the dart throwing method
 double findPi(long nthrows=100*1000*1000){
   srand48((long)time(NULL));
   long count=0;
@@ -69,6 +53,22 @@ int mandel_test(double c_re, double c_im, int NTRIALS){
 }
 
 
+// explore the Mandelbrot set 
+void mandel(double *img, double re1, double re2, double im1, double im2,
+	    int nr, int ni, int NTRIALS){
+  double dx=(re2-re1)/nr;
+  double dy=(im2-im1)/ni;
+  // loop over grid starting in lower left corner
+  for (int j=0; j<ni; ++j){
+    double im=im1+j*dy;
+    for (int i=0; i<nr; ++i){
+      double re=re1+i*dx;
+      img[j*ni+i]=mandel_test(re,im,NTRIALS);
+    }
+  }
+}
+
+  
 
 #ifdef EXTERNC
 }
