@@ -1,6 +1,7 @@
 # a simple method to estimate pi using uniformly distributed random numbers
 
 from random import random
+from math import sqrt
 
 # estimate pi from the dart throwing method
 def findPi(nthrows=100*1000*1000):
@@ -37,12 +38,12 @@ def mandel_test(c_re, c_im, NTRIALS):
     return counts
 
 # explore the Mandelbrot set 
-def mandel(img, re1, re2, im1, im2, nr, ni, NTRIALS):
+def mandel(img, re1, re2, im1, im2, nr, ni, NTRIALS=255):
     dx=(re2-re1)/nr
     dy=(im2-im1)/ni
     # loop over grid starting in lower left corner
     for j in range(ni):
         im=im1+j*dy
-        for i inrange (nr):
+        for i in range(nr):
             re=re1+i*dx
-            img[j*ni+i]=mandel_test(re,im,NTRIALS)
+            img[j][i]=mandel_test(re,im,NTRIALS)
