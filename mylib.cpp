@@ -53,7 +53,14 @@ int mandel_test(double c_re, double c_im, int NTRIALS){
 }
 
 
-// explore the Mandelbrot set 
+// explore the Mandelbrot set
+// we pass the image buffer as a 1D array, and access the pixels
+// using pointer arithmatic
+// eg for an array a[n][m], n=nrow, m=mcolumns
+// a[0] = a[0][0]
+// a[m] = a[1][0]
+// a[m+1] = a[1][1]
+// ...
 void mandel(double *img, double re1, double re2, double im1, double im2,
 	    int nr, int ni, int NTRIALS){
   double dx=(re2-re1)/nr;
