@@ -5,12 +5,17 @@
 # recognize the names of the functions (c.f. name mangling)
 
 
-all: mylib.so mylib.soc
+all: mylib.so mylib.soc mycpplib.so
 
 mylib.so: mylib.cpp mylib.h # build shared library
-	g++ -O -Wall -fPIC -shared -omylib.so mylib.cpp 
+	g++ -O2 -Wall -fPIC -shared -omylib.so mylib.cpp 
+
 mylib.soc: mylib.cpp mylib.h  # build "so" w/ C style linkage
-	g++ -O -Wall -fPIC -DEXTERNC -shared -omylib.soc mylib.cpp 
+	g++ -O2 -Wall -fPIC -DEXTERNC -shared -omylib.soc mylib.cpp 
+
+mycpplib.so: mycpplib.cpp mycpplib.h
+	g++ -O2 -Wall -fPIC -shared -omycpplib.so mycpplib.cpp
+
 
 clean:
-	rm -f mylib.so mylib.soc *~
+	rm -f mylib.so mylib.soc mycpplib.so *~
