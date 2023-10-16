@@ -19,3 +19,6 @@ mycpplib.so: mycpplib.cpp mycpplib.h
 
 clean:
 	rm -f mylib.so mylib.soc mycpplib.so *~
+
+cleanall: clean
+	rm -rf __pycache__ .ipynb_checkpoints
