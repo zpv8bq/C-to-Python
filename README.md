@@ -1,9 +1,4 @@
-# C+Python
+# C-to-Python
 
-## Project 1 Results and Discussion (findPI)
-
-
-## Project 2 (count3d)
-
-- place results in notebook
+Various examples and short exercises on bridging Python and compiled code
   
